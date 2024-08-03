@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://r1gdkrmvl6m7"]
+[gd_scene load_steps=6 format=3 uid="uid://r1gdkrmvl6m7"]
 
 [ext_resource type="Texture2D" uid="uid://d1iowod0hpo3y" path="res://assets/tilesets/overworld.png" id="1_0v0e4"]
 [ext_resource type="PackedScene" uid="uid://darey04mn6d57" path="res://scenes/player.tscn" id="2_be5nb"]
+[ext_resource type="PackedScene" uid="uid://menyqwr6fdx7" path="res://scenes/beast.tscn" id="3_av2iu"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fmluo"]
 texture = ExtResource("1_0v0e4")
@@ -233,3 +234,6 @@ layer_1/name = "Collision"
 layer_1/tile_data = PackedInt32Array(196610, 65536, 4, 196611, 65536, 4, 196612, 131072, 4, 262148, 0, 8, 262149, 131072, 4, 327685, 131072, 6, 327684, 65536, 6, 262146, 65536, 6, 262147, 65536, 7, 327683, 0, 6, 262145, 0, 6, 196609, 0, 4, 524306, 589824, 4, 589842, 589824, 5, 655378, 589824, 6, 524307, 655360, 4, 589843, 655360, 5, 655379, 655360, 6, 524308, 720896, 4, 589844, 720896, 5, 655380, 720896, 6, 196622, 720896, 7, 262159, 720896, 7, 65547, 0, 16, 393232, 131072, 16, 262151, 65536, 16)
 
 [node name="player" parent="." instance=ExtResource("2_be5nb")]
+
+[node name="enemy" parent="." instance=ExtResource("3_av2iu")]
+position = Vector2(112, 25)

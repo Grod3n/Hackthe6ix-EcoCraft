@@ -1,7 +1,10 @@
-[gd_scene load_steps=55 format=3 uid="uid://darey04mn6d57"]
+[gd_scene load_steps=56 format=3 uid="uid://darey04mn6d57"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_uvn2p"]
 [ext_resource type="Texture2D" uid="uid://c2bd5n1nrbbh3" path="res://assets/characters/player.png" id="2_gwaog"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_k73q4"]
+radius = 7.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7sa2b"]
 atlas = ExtResource("2_gwaog")
@@ -414,11 +417,14 @@ animations = [{
 }]
 
 [node name="player" type="CharacterBody2D"]
+collision_layer = 3
 script = ExtResource("1_uvn2p")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 10)
+shape = SubResource("CircleShape2D_k73q4")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_hlv86")
 animation = &"front_idle"
-frame_progress = 0.653396
+frame_progress = 0.823361

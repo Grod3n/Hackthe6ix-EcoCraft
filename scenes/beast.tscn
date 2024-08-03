@@ -1,6 +1,7 @@
-[gd_scene load_steps=15 format=3 uid="uid://menyqwr6fdx7"]
+[gd_scene load_steps=18 format=3 uid="uid://menyqwr6fdx7"]
 
 [ext_resource type="Texture2D" uid="uid://da7siv1ffmjvf" path="res://assets/characters/Beast.png" id="1_0rggc"]
+[ext_resource type="Script" path="res://scripts/beast.gd" id="1_7l74l"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ofoyi"]
 atlas = ExtResource("1_0rggc")
@@ -104,9 +105,29 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_ex8ti"]
+radius = 37.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_l88iu"]
+radius = 7.07107
+
 [node name="enemy" type="CharacterBody2D"]
+script = ExtResource("1_7l74l")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_jiy82")
 animation = &"front_walk"
-frame_progress = 0.509759
+frame_progress = 0.558639
+
+[node name="detection_area" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="detection_area"]
+shape = SubResource("CircleShape2D_ex8ti")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_l88iu")
+
+[connection signal="body_entered" from="detection_area" to="." method="_on_detection_area_body_entered"]
+[connection signal="body_exited" from="detection_area" to="." method="_on_detection_area_body_exited"]
