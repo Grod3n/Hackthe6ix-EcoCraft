@@ -4,12 +4,11 @@ var speed = 25  # Its a little bit fast for debugging purposes
 var player_chase = false
 var player = null
 var health = 50
-var max_health = 50  
 var player_inattack_range = false
 var can_take_damage = true
 
 
-
+#cool	
 
 func _physics_process(delta):
 	
