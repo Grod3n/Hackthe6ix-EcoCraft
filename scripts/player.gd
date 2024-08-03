@@ -13,8 +13,8 @@ var max_health = 100
 func _ready():
 	$AnimatedSprite2D.play("front_idle")
 	$AttackTimer.timeout.connect(Callable(self, "_on_AttackTimer_timeout"))
-	add_to_group("player") 
-	update_health_bar() # broken, dunno why
+	add_to_group("player")  
+	update_health_bar()  # broke
 
 func _physics_process(delta):
 	if is_dead:
@@ -96,7 +96,7 @@ func attack():
 	# Detect collision with enemy
 	for body in attack_area.get_overlapping_bodies():
 		if body.is_in_group("enemies"):
-			body.take_damage(10)  # broken for some reason
+			body.take_damage(10)  # broken for god knows why
 			print("Dealing 10 damage to enemy: ", body)
 
 func _on_AttackTimer_timeout():
@@ -116,6 +116,8 @@ func update_health_bar():
 		print("Health bar is null")
 
 func die():
+	if is_dead:
+		return  # Prevent multiple calls to die()
 	is_dead = true
 	var animation = $AnimatedSprite2D
 	animation.play("death")
@@ -123,6 +125,6 @@ func die():
 	print("Player has died")
 
 func _on_death_animation_finished():
-	if $AnimatedSprite2D.animation == "death":
-		queue_free()  # broken for reasons unknown to me
+	if $AnimatedSprite2D.animation == "death" and is_dead:
+		get_tree().change_scene_to_file("res://path_to_your_game_over_scene.tscn")
 		print("Player removed from scene")

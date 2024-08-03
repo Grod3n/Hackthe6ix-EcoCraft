@@ -1,0 +1,36 @@
+[gd_scene load_steps=4 format=3 uid="uid://cy058ucp5wx0n"]
+
+[ext_resource type="Script" path="res://scripts/TitleScreen.gd" id="1_6aooi"]
+[ext_resource type="Texture2D" uid="uid://bm5t832aj0j4o" path="res://assets/misc/temp main menu background.png" id="2_i166f"]
+[ext_resource type="Texture2D" uid="uid://b4t2hnhy52rs8" path="res://assets/misc/EcoCraft Logo.png" id="3_vnd5a"]
+
+[node name="TitleScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_6aooi")
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 1923.0
+offset_bottom = 1077.0
+scale = Vector2(0.994763, 0.994763)
+texture = ExtResource("2_i166f")
+
+[node name="Logo" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = -50.0
+offset_top = -149.0
+offset_right = 450.0
+offset_bottom = 351.0
+scale = Vector2(0.888627, 0.888627)
+texture = ExtResource("3_vnd5a")
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = -10.0
+offset_top = 48.0
+offset_right = 258.0
+offset_bottom = 93.0
+text = "Play"
