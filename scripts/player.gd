@@ -2,36 +2,36 @@ extends CharacterBody2D
 
 const speed = 100
 var current_dir = "none"
-var is_attacking = false
 var is_dead = false
 var health = 100
 var max_health = 100  # Maximum health for the player
 var tree_count = 0  # Variable to track the number of trees planted
+var enemy_in_attack_range = false
+var enemy_attack_cooldown = true
+var attack_ip = false
 
-@onready var attack_area = $AttackArea
-@onready var health_bar = $HealthBar  # Reference to the health bar
+
+
 @onready var tree_scene = preload("res://scenes/Tree.tscn")  # Preload the tree scene
 @onready var tree_count_label = $"/root/MainScene/TreeCountLabel"  # Path to your tree count label
 
 func _ready():
-	$AnimatedSprite2D.play("front_idle")
-	$AttackTimer.timeout.connect(Callable(self, "_on_AttackTimer_timeout"))
-	add_to_group("player")  # Ensure the player is in the "player" group
-	update_health_bar()  # Update the health display
 	update_tree_count_label()  # Initialize the tree count label
 	print("TreeCountLabel Node: ", tree_count_label)
 
 func _physics_process(delta):
-	if is_dead:
-		return
+	 
 	player_movement(delta)
-	if Input.is_action_just_pressed("attack") and not is_attacking:
-		attack()
-	if Input.is_action_just_pressed("ui_spawn_tree"):
-		spawn_tree()
+	enemy_attack()
+	attack()
+	
+	if health <= 0:
+		is_dead = true
+		health = 0
+		self.queue_free()
 
 func player_movement(delta):
-	if not is_attacking:
+	
 		velocity = Vector2.ZERO
 
 		if Input.is_action_pressed("ui_right"):
@@ -54,7 +54,7 @@ func player_movement(delta):
 			animate(0)
 
 		move_and_slide()
-
+		
 func animate(movement):
 	var dir = current_dir
 	var animation = $AnimatedSprite2D
@@ -62,80 +62,84 @@ func animate(movement):
 	if dir == "right":
 		animation.flip_h = false
 		if movement == 1:
-			animation.play("side_walk")
-		else:
-			animation.play("side_idle")
-			
+				animation.play("side_walk")
+		elif movement == 0:
+			if attack_ip == false:
+				animation.play("side_idle")	
 	if dir == "left":
 		animation.flip_h = true
 		if movement == 1:
 			animation.play("side_walk")
-		else:
-			animation.play("side_idle")
+		elif movement == 0:
+			if attack_ip == false:
+				animation.play("side_idle")
 			
 	if dir == "up":
 		if movement == 1:
 			animation.play("back_walk")
-		else:
-			animation.play("back_idle")
+		elif movement == 0:
+			if attack_ip == false:
+				animation.play("back_idle")
 			
 	if dir == "down":
 		if movement == 1:
 			animation.play("front_walk")
-		else:
-			animation.play("front_idle")
+		elif movement == 0:
+			if attack_ip == false:
+				animation.play("front_idle")
+			
+func player():
+	pass
+
+func _on_attack_area_body_entered(body):
+	if body.has_method("enemy"):
+		enemy_in_attack_range = true
+
+ 
+func _on_attack_area_body_exited(body):
+	if body.has_method("enemy"):
+		enemy_in_attack_range = false
+
+func enemy_attack():
+	if enemy_in_attack_range and enemy_attack_cooldown == true:
+		health = health - 20
+		enemy_attack_cooldown = false
+		$attack_timer.start()
+		print("did", health, "damage")
+
+func _on_attack_timer_timeout():
+	enemy_attack_cooldown = true
+
+
 
 func attack():
-	is_attacking = true
+	var dir = current_dir
 	var animation = $AnimatedSprite2D
+	
+	if Input.is_action_just_pressed("attack"):
+		Globalvar.player_current_attack = true
+		attack_ip = true
+		if dir == "right":
+			animation.play("side_attack")
+			$deal_attack_timer.start()
+		elif dir == "left":
+			animation.play("side_attack")
+			$deal_attack_timer.start()
+		elif dir == "up":
+			animation.play("back_attack")
+			$deal_attack_timer.start()
+		elif dir == "down":
+			animation.play("front_attack")
+			$deal_attack_timer.start()  # Start the timer for the attack duration (adjust the duration as needed)
 
-	if current_dir == "right":
-		animation.play("side_attack")
-	elif current_dir == "left":
-		animation.play("side_attack")
-	elif current_dir == "up":
-		animation.play("back_attack")
-	elif current_dir == "down":
-		animation.play("front_attack")
+	
+func _on_deal_attack_timer_timeout():
+	$deal_attack_timer.stop()
+	Globalvar.player_current_attack = false
+	attack_ip = false
 
-	$AttackTimer.start(0.5)  # Start the timer for the attack duration (adjust the duration as needed)
 
-	# Detect collision with enemy
-	for body in attack_area.get_overlapping_bodies():
-		if body.is_in_group("enemies"):
-			body.take_damage(10)  # Deal 10 damage to the enemy
-			print("Dealing 10 damage to enemy: ", body)
 
-func _on_AttackTimer_timeout():
-	is_attacking = false
-
-func take_damage(amount):
-	health -= amount
-	update_health_bar()
-	print("Player health: ", health)
-	if health <= 0:
-		die()
-
-func update_health_bar():
-	if health_bar != null:
-		health_bar.value = health
-	else:
-		print("Health bar is null")
-
-func die():
-	if is_dead:
-		return  # Prevent multiple calls to die()
-	is_dead = true
-	var animation = $AnimatedSprite2D
-	animation.play("death")
-	$AnimatedSprite2D.animation_finished.connect(Callable(self, "_on_death_animation_finished"))
-	print("Player has died")
-
-func _on_death_animation_finished():
-	if $AnimatedSprite2D.animation == "death" and is_dead:
-		# Load the Game Over screen
-		get_tree().change_scene_to_file("res://path_to_your_game_over_scene.tscn")
-		print("Player removed from scene")
 
 func spawn_tree():
 	var tree_instance = tree_scene.instantiate()

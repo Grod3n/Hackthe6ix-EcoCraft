@@ -1,7 +1,7 @@
 [gd_scene load_steps=58 format=3 uid="uid://darey04mn6d57"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_uvn2p"]
-[ext_resource type="Script" path="res://scenes/attack_timer.gd" id="2_4bts0"]
+[ext_resource type="Script" path="res://scripts/attack_timer.gd" id="2_4bts0"]
 [ext_resource type="Texture2D" uid="uid://c2bd5n1nrbbh3" path="res://assets/characters/player.png" id="2_gwaog"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7sa2b"]
@@ -415,10 +415,10 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_k73q4"]
-radius = 7.0
+radius = 6.08276
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ht1cb"]
-radius = 32.0156
+radius = 15.0
 
 [node name="player" type="CharacterBody2D" groups=["player"]]
 light_mask = 3
@@ -434,10 +434,10 @@ frame_progress = 0.823361
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["player"]]
 light_mask = 3
 visibility_layer = 3
-position = Vector2(0, 10)
+position = Vector2(1, 14)
 shape = SubResource("CircleShape2D_k73q4")
 
-[node name="AttackTimer" type="Timer" parent="." groups=["player"]]
+[node name="attack_timer" type="Timer" parent="." groups=["player"]]
 script = ExtResource("2_4bts0")
 
 [node name="AttackArea" type="Area2D" parent="." groups=["player"]]
@@ -445,8 +445,11 @@ script = ExtResource("2_4bts0")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea" groups=["player"]]
 light_mask = 3
 visibility_layer = 3
-position = Vector2(0, 10)
+position = Vector2(0, 8)
 shape = SubResource("CircleShape2D_ht1cb")
+
+[node name="deal_attack_timer" type="Timer" parent="."]
+wait_time = 0.5
 
 [node name="HealthBar" type="TextureProgressBar" parent="." groups=["player"]]
 offset_left = -9.0
@@ -455,3 +458,8 @@ offset_right = 10.0
 offset_bottom = -2.0
 tint_under = Color(0, 0, 0, 1)
 tint_progress = Color(1, 0, 0, 1)
+
+[connection signal="timeout" from="attack_timer" to="." method="_on_attack_timer_timeout"]
+[connection signal="body_entered" from="AttackArea" to="." method="_on_attack_area_body_entered"]
+[connection signal="body_exited" from="AttackArea" to="." method="_on_attack_area_body_exited"]
+[connection signal="timeout" from="deal_attack_timer" to="." method="_on_deal_attack_timer_timeout"]

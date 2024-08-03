@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://bsqhc4jj4kbvh"]
+[gd_scene load_steps=3 format=3 uid="uid://bdjw5pctnbxuq"]
 
 [ext_resource type="Script" path="res://scripts/GameOverScreen.gd" id="1_dgd5x"]
 [ext_resource type="Texture2D" uid="uid://yx2xsr2i0oxa" path="res://assets/misc/game over screen.png" id="1_kcwce"]
@@ -12,22 +12,24 @@ script = ExtResource("1_dgd5x")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_right = 3012.0
+offset_bottom = 1693.0
+scale = Vector2(0.123111, 0.123111)
 texture = ExtResource("1_kcwce")
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 0
-offset_left = 454.0
-offset_top = 97.0
-offset_right = 559.0
-offset_bottom = 120.0
+offset_left = 96.0
+offset_top = 30.0
+offset_right = 201.0
+offset_bottom = 53.0
 text = "Game Over :("
 
 [node name="Button" type="Button" parent="."]
 layout_mode = 0
-offset_left = 469.0
-offset_top = 179.0
-offset_right = 534.0
-offset_bottom = 210.0
+offset_left = 119.0
+offset_top = 57.0
+offset_right = 184.0
+offset_bottom = 88.0
+scale = Vector2(0.802092, 0.802092)
 text = "Restart"

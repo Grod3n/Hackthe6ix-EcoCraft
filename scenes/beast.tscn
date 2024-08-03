@@ -1,7 +1,7 @@
-[gd_scene load_steps=18 format=3 uid="uid://menyqwr6fdx7"]
+[gd_scene load_steps=19 format=3 uid="uid://menyqwr6fdx7"]
 
 [ext_resource type="Texture2D" uid="uid://da7siv1ffmjvf" path="res://assets/characters/Beast.png" id="1_0rggc"]
-[ext_resource type="Script" path="res://scripts/beast.gd" id="1_7l74l"]
+[ext_resource type="Script" path="res://scripts/enemy.gd" id="1_7l74l"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ofoyi"]
 atlas = ExtResource("1_0rggc")
@@ -109,7 +109,9 @@ animations = [{
 radius = 58.0086
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_1ykh6"]
-radius = 8.24621
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_g28w7"]
+radius = 11.0
 
 [node name="enemy" type="CharacterBody2D" groups=["enemy"]]
 collision_layer = 2
@@ -136,6 +138,13 @@ shape = SubResource("CircleShape2D_1ykh6")
 [node name="DamageTimer" type="Timer" parent="." groups=["enemy"]]
 wait_time = 0.5
 
+[node name="enemy_hitbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="enemy_hitbox"]
+shape = SubResource("CircleShape2D_g28w7")
+
 [connection signal="body_entered" from="DetectionArea" to="." method="_on_detection_area_body_entered"]
 [connection signal="body_exited" from="DetectionArea" to="." method="_on_detection_area_body_exited"]
 [connection signal="timeout" from="DamageTimer" to="." method="_on_damage_timer_timeout"]
+[connection signal="body_entered" from="enemy_hitbox" to="." method="_on_enemy_hitbox_body_entered"]
+[connection signal="body_exited" from="enemy_hitbox" to="." method="_on_enemy_hitbox_body_exited"]

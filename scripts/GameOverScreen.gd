@@ -6,4 +6,4 @@ func _ready():
 
 func _on_RestartButton_pressed():
 	# Reload the main game scene
-	get_tree().change_scene_to_file("res://path_to_your_main_game_scene.tscn")
+	get_tree().change_scene_to_file("res://scenes/game.tscn")
