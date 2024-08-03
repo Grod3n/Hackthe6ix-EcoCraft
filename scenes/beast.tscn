@@ -146,6 +146,16 @@ collision_mask = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="enemy_hitbox"]
 shape = SubResource("CircleShape2D_g28w7")
 
+[node name="healthbar" type="ProgressBar" parent="."]
+modulate = Color(1, 0, 0, 1)
+offset_left = -8.0
+offset_top = 9.0
+offset_right = 152.0
+offset_bottom = 36.0
+scale = Vector2(0.1, 0.1)
+max_value = 50.0
+show_percentage = false
+
 [connection signal="body_entered" from="DetectionArea" to="." method="_on_detection_area_body_entered"]
 [connection signal="body_exited" from="DetectionArea" to="." method="_on_detection_area_body_exited"]
 [connection signal="timeout" from="DamageTimer" to="." method="_on_damage_timer_timeout"]
