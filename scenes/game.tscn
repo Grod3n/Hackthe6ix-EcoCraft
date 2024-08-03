@@ -237,3 +237,11 @@ layer_1/tile_data = PackedInt32Array(196610, 65536, 4, 196611, 65536, 4, 196612,
 
 [node name="enemy" parent="." instance=ExtResource("3_av2iu")]
 position = Vector2(112, 25)
+
+[node name="TreeCountLabel" type="Label" parent="."]
+offset_left = 218.0
+offset_top = 1.0
+offset_right = 360.0
+offset_bottom = 24.0
+scale = Vector2(0.451865, 0.451865)
+text = "No Trees Planted"
