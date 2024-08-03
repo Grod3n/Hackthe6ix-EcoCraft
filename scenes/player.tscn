@@ -423,6 +423,7 @@ radius = 15.0
 [node name="player" type="CharacterBody2D" groups=["player"]]
 light_mask = 3
 visibility_layer = 3
+collision_layer = 3
 collision_mask = 2
 script = ExtResource("1_uvn2p")
 
@@ -441,6 +442,8 @@ shape = SubResource("CircleShape2D_k73q4")
 script = ExtResource("2_4bts0")
 
 [node name="AttackArea" type="Area2D" parent="." groups=["player"]]
+collision_layer = 2
+collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea" groups=["player"]]
 light_mask = 3

@@ -124,6 +124,7 @@ frame_progress = 0.558639
 
 [node name="DetectionArea" type="Area2D" parent="." groups=["enemy"]]
 collision_layer = 2
+collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea" groups=["enemy"]]
 light_mask = 2
@@ -139,6 +140,8 @@ shape = SubResource("CircleShape2D_1ykh6")
 wait_time = 0.5
 
 [node name="enemy_hitbox" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="enemy_hitbox"]
 shape = SubResource("CircleShape2D_g28w7")
