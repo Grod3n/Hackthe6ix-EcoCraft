@@ -1,8 +1,10 @@
-[gd_scene load_steps=58 format=3 uid="uid://darey04mn6d57"]
+[gd_scene load_steps=56 format=3 uid="uid://darey04mn6d57"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_uvn2p"]
-[ext_resource type="Script" path="res://scenes/attack_timer.gd" id="2_4bts0"]
 [ext_resource type="Texture2D" uid="uid://c2bd5n1nrbbh3" path="res://assets/characters/player.png" id="2_gwaog"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_k73q4"]
+radius = 7.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7sa2b"]
 atlas = ExtResource("2_gwaog")
@@ -414,44 +416,15 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_k73q4"]
-radius = 7.0
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_ht1cb"]
-radius = 32.0156
-
-[node name="player" type="CharacterBody2D" groups=["player"]]
-light_mask = 3
-visibility_layer = 3
-collision_mask = 2
+[node name="player" type="CharacterBody2D"]
+collision_layer = 3
 script = ExtResource("1_uvn2p")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." groups=["player"]]
-sprite_frames = SubResource("SpriteFrames_hlv86")
-animation = &"front_idle"
-frame_progress = 0.823361
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["player"]]
-light_mask = 3
-visibility_layer = 3
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 10)
 shape = SubResource("CircleShape2D_k73q4")
 
-[node name="AttackTimer" type="Timer" parent="." groups=["player"]]
-script = ExtResource("2_4bts0")
-
-[node name="AttackArea" type="Area2D" parent="." groups=["player"]]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea" groups=["player"]]
-light_mask = 3
-visibility_layer = 3
-position = Vector2(0, 10)
-shape = SubResource("CircleShape2D_ht1cb")
-
-[node name="HealthBar" type="TextureProgressBar" parent="." groups=["player"]]
-offset_left = -9.0
-offset_top = -6.0
-offset_right = 10.0
-offset_bottom = -2.0
-tint_under = Color(0, 0, 0, 1)
-tint_progress = Color(1, 0, 0, 1)
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_hlv86")
+animation = &"front_idle"
+frame_progress = 0.823361
