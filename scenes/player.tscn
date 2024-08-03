@@ -420,5 +420,5 @@ script = ExtResource("1_uvn2p")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_hlv86")
-animation = &"back_attack"
-frame_progress = 0.8256
+animation = &"front_idle"
+frame_progress = 0.653396

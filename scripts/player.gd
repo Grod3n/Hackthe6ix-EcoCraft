@@ -61,7 +61,7 @@ func animate(movement):
 		else:
 			animation.play("back_idle")
 			
-	if dir == "up":
+	if dir == "down":
 		if movement == 1:
 			animation.play("front_walk")
 		else:
