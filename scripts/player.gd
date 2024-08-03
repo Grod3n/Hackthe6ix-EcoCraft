@@ -5,16 +5,21 @@ var current_dir = "none"
 var is_attacking = false
 var is_dead = false
 var health = 100
-var max_health = 100  
+var max_health = 100  # Maximum health for the player
+var tree_count = 0  # Variable to track the number of trees planted
 
 @onready var attack_area = $AttackArea
-@onready var health_bar = $HealthBar  
+@onready var health_bar = $HealthBar  # Reference to the health bar
+@onready var tree_scene = preload("res://scenes/Tree.tscn")  # Preload the tree scene
+@onready var tree_count_label = $"/root/MainScene/TreeCountLabel"  # Path to your tree count label
 
 func _ready():
 	$AnimatedSprite2D.play("front_idle")
 	$AttackTimer.timeout.connect(Callable(self, "_on_AttackTimer_timeout"))
-	add_to_group("player")  
-	update_health_bar()  # broke
+	add_to_group("player")  # Ensure the player is in the "player" group
+	update_health_bar()  # Update the health display
+	update_tree_count_label()  # Initialize the tree count label
+	print("TreeCountLabel Node: ", tree_count_label)
 
 func _physics_process(delta):
 	if is_dead:
@@ -22,6 +27,8 @@ func _physics_process(delta):
 	player_movement(delta)
 	if Input.is_action_just_pressed("attack") and not is_attacking:
 		attack()
+	if Input.is_action_just_pressed("ui_spawn_tree"):
+		spawn_tree()
 
 func player_movement(delta):
 	if not is_attacking:
@@ -91,12 +98,12 @@ func attack():
 	elif current_dir == "down":
 		animation.play("front_attack")
 
-	$AttackTimer.start(0.5)  
+	$AttackTimer.start(0.5)  # Start the timer for the attack duration (adjust the duration as needed)
 
 	# Detect collision with enemy
 	for body in attack_area.get_overlapping_bodies():
 		if body.is_in_group("enemies"):
-			body.take_damage(10)  # broken for god knows why
+			body.take_damage(10)  # Deal 10 damage to the enemy
 			print("Dealing 10 damage to enemy: ", body)
 
 func _on_AttackTimer_timeout():
@@ -126,5 +133,21 @@ func die():
 
 func _on_death_animation_finished():
 	if $AnimatedSprite2D.animation == "death" and is_dead:
+		# Load the Game Over screen
 		get_tree().change_scene_to_file("res://path_to_your_game_over_scene.tscn")
 		print("Player removed from scene")
+
+func spawn_tree():
+	var tree_instance = tree_scene.instantiate()
+	get_parent().add_child(tree_instance)
+	tree_instance.global_position = global_position
+	tree_count += 1
+	update_tree_count_label()
+	print("Tree spawned at: ", global_position)
+
+func update_tree_count_label():
+	if tree_count_label:
+		tree_count_label.text = "Trees: " + str(tree_count)
+		print("Tree count updated to: ", tree_count)
+	else:
+		print("Tree count label is null")
