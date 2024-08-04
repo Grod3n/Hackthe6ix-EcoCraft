@@ -539,4 +539,32 @@ offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("11_ebnnj")
 
+[node name="Label" type="Label" parent="."]
+offset_left = -207.0
+offset_top = -4.0
+offset_right = -42.0
+offset_bottom = 19.0
+text = "Welcome to EcoCraft!
+"
+
+[node name="Label2" type="Label" parent="."]
+offset_left = -200.0
+offset_top = 21.0
+offset_right = -48.0
+offset_bottom = 82.0
+theme_override_font_sizes/font_size = 9
+text = "Use your arrow keys to start your adventure to restore civilization! 
+Press SPACE to defend yourself from the viruses"
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Label3" type="Label" parent="."]
+offset_left = -204.0
+offset_top = 113.0
+offset_right = -24.0
+offset_bottom = 200.0
+theme_override_font_sizes/font_size = 8
+text = "Press Q to develop houses and F to plant a tree. Trees will lower the speed the viruses spawn. You will need energy to build and plant. Kill the viruses to gain more energy to build and plant. "
+autowrap_mode = 2
+
 [connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]
