@@ -1,4 +1,4 @@
-	extends Node2D
+extends Node2D
 
 const ROTATION_SPEED = 2
 # Called when the node enters the scene tree for the first time.

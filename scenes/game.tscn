@@ -1,7 +1,7 @@
 [gd_scene load_steps=13 format=3 uid="uid://r1gdkrmvl6m7"]
 
 [ext_resource type="Texture2D" uid="uid://d1iowod0hpo3y" path="res://assets/tilesets/overworld.png" id="1_0v0e4"]
-[ext_resource type="Script" path="res://scenes/game.gd" id="1_5dphj"]
+[ext_resource type="Script" path="res://scripts/game.gd" id="1_5dphj"]
 [ext_resource type="PackedScene" uid="uid://darey04mn6d57" path="res://scenes/player.tscn" id="2_be5nb"]
 [ext_resource type="Texture2D" uid="uid://dex78oqj1h5ap" path="res://assets/tilesets/tree.png" id="2_ti4gv"]
 [ext_resource type="PackedScene" uid="uid://menyqwr6fdx7" path="res://scenes/beast.tscn" id="3_av2iu"]
