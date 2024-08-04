@@ -27,6 +27,10 @@ window/stretch/scale=4.0
 version_control/plugin_name="GitPlugin"
 version_control/autoload_on_startup=true
 
+[gui]
+
+theme/custom_font="res://assets/Booxkel4Godot/Bookxel.otf"
+
 [input]
 
 attack={
