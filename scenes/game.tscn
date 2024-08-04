@@ -502,20 +502,20 @@ collision_layer = 1
 collision_mask = 1
 
 [node name="enemy" parent="." instance=ExtResource("3_av2iu")]
-position = Vector2(277, 46)
+position = Vector2(15, 99)
 
 [node name="Spawn" parent="." instance=ExtResource("5_vw2ek")]
-position = Vector2(29, 151)
+position = Vector2(51, -60)
 
 [node name="SpawnTimer" type="Timer" parent="."]
 wait_time = 20.0
 autostart = true
 
 [node name="SpawnArea" type="ReferenceRect" parent="."]
-offset_left = 8.0
-offset_top = -9.0
-offset_right = 345.0
-offset_bottom = 170.0
+offset_left = -92.0
+offset_top = 250.0
+offset_right = 79.0
+offset_bottom = 325.0
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -530,9 +530,9 @@ texture_progress = ExtResource("7_tu7c7")
 script = ExtResource("5_7rbcp")
 
 [node name="Score" type="HBoxContainer" parent="CanvasLayer"]
-offset_left = 119.0
+offset_left = 218.0
 offset_top = 3.0
-offset_right = 162.0
+offset_right = 261.0
 offset_bottom = 26.0
 scale = Vector2(0.7, 0.7)
 
@@ -548,9 +548,9 @@ expand_mode = 2
 stretch_mode = 4
 
 [node name="Energy" type="HBoxContainer" parent="CanvasLayer"]
-offset_left = 157.0
+offset_left = 255.0
 offset_top = 3.0
-offset_right = 200.0
+offset_right = 298.0
 offset_bottom = 26.0
 scale = Vector2(0.7, 0.7)
 
@@ -566,29 +566,28 @@ expand_mode = 2
 stretch_mode = 4
 
 [node name="Label" type="Label" parent="."]
-offset_left = -188.0
-offset_top = -12.0
-offset_right = -23.0
-offset_bottom = 11.0
+offset_left = -221.0
+offset_top = 4.0
+offset_right = -56.0
+offset_bottom = 27.0
 text = "Welcome to EcoCraft!
 "
 
 [node name="Label2" type="Label" parent="."]
-offset_left = -188.0
-offset_top = 11.0
-offset_right = -36.0
-offset_bottom = 72.0
+offset_left = -179.0
+offset_top = 18.0
+offset_right = -35.0
+offset_bottom = 95.0
 theme_override_font_sizes/font_size = 9
-text = "Use your arrow keys to start your adventure to restore civilization! 
-Press SPACE to defend yourself from the viruses"
+text = "Use your arrow keys to start your adventure to restore civilization! Press SPACE to defend yourself from the viruses"
 vertical_alignment = 1
 autowrap_mode = 2
 
 [node name="Label3" type="Label" parent="."]
-offset_left = -190.0
-offset_top = 121.0
-offset_right = -18.0
-offset_bottom = 208.0
+offset_left = -194.0
+offset_top = 129.0
+offset_right = -22.0
+offset_bottom = 216.0
 theme_override_font_sizes/font_size = 8
 text = "Press Q to develop houses and F to plant a tree. Trees will lower the speed the viruses spawn. You will need energy to build and plant. Kill the viruses to gain more energy to build and plant. "
 autowrap_mode = 2
