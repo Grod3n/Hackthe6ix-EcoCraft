@@ -225,7 +225,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"back_attack",
-"speed": 5.0
+"speed": 9.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -302,7 +302,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"front_attack",
-"speed": 5.0
+"speed": 9.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -365,7 +365,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"side_attack",
-"speed": 5.0
+"speed": 9.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -430,6 +430,7 @@ script = ExtResource("1_uvn2p")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." groups=["player"]]
 sprite_frames = SubResource("SpriteFrames_hlv86")
 animation = &"front_attack"
+frame_progress = 0.257773
 offset = Vector2(0, -12.5)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["player"]]
