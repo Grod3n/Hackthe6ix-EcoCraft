@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://cgttjp78xmyt6"]
 
 [ext_resource type="Texture2D" uid="uid://dcacy676b5ci" path="res://assets/objects/Mangekyou_Sharingan_Sasuke_(Eternal).svg.png" id="1_bhxxh"]
-[ext_resource type="Script" path="res://scenes/spawn.gd" id="1_hrm1d"]
+[ext_resource type="Script" path="res://scripts/spawn.gd" id="1_hrm1d"]
 
 [node name="Spawn" type="Node2D"]
 script = ExtResource("1_hrm1d")
