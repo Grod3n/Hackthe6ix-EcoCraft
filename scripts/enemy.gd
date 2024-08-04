@@ -29,8 +29,6 @@ func _physics_process(delta):
 
 func chase_player(delta):
 	if player:
-		
-		print("chasing")
 		# Determine if the player is closer in the X or Y direction
 		var horizontal_distance = abs(player.position.x - position.x)
 		var vertical_distance = abs(player.position.y - position.y)

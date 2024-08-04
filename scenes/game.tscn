@@ -498,7 +498,7 @@ position = Vector2(277, 46)
 position = Vector2(29, 151)
 
 [node name="SpawnTimer" type="Timer" parent="."]
-wait_time = 5.0
+wait_time = 20.0
 autostart = true
 
 [node name="SpawnArea" type="ReferenceRect" parent="."]
