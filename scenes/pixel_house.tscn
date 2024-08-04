@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://ca67ycaad5sdt"]
+
+[ext_resource type="Texture2D" uid="uid://qm2cbwpxfk2u" path="res://assets/tilesets/pixel-art-house-removebg-preview.png" id="1_x8one"]
+
+[node name="pixel_house" type="Sprite2D"]
+position = Vector2(0.999998, 0)
+scale = Vector2(0.199219, 0.199219)
+texture = ExtResource("1_x8one")

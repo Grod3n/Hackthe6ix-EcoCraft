@@ -20,13 +20,17 @@ func _physics_process(delta):
 	
 	if player_chase:
 		chase_player(delta)
+		move_and_collide(Vector2(0,0))
 	else:
 		random_movement(delta)
+		move_and_collide(Vector2(0,0))
 		
 	animate()
 
 func chase_player(delta):
 	if player:
+		
+		print("chasing")
 		# Determine if the player is closer in the X or Y direction
 		var horizontal_distance = abs(player.position.x - position.x)
 		var vertical_distance = abs(player.position.y - position.y)
@@ -38,7 +42,7 @@ func chase_player(delta):
 			# Move vertically
 			move_direction = Vector2(0, sign(player.position.y - position.y))
 		
-		position += move_direction * speed * delta
+		position += move_direction * (speed+15) * delta
 		
 func random_movement(delta):
 	random_move_time -= delta
