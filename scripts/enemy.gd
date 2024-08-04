@@ -68,6 +68,9 @@ func animate():
 		$AnimatedSprite2D.flip_h = true
 		$AnimatedSprite2D.play("side_walk")
 
+func enemy():
+	pass
+
 func _on_detection_area_body_entered(body):
 
 		player = body

@@ -1,9 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://r1gdkrmvl6m7"]
+[gd_scene load_steps=10 format=3 uid="uid://r1gdkrmvl6m7"]
 
 [ext_resource type="Texture2D" uid="uid://d1iowod0hpo3y" path="res://assets/tilesets/overworld.png" id="1_0v0e4"]
+[ext_resource type="Script" path="res://scenes/game.gd" id="1_5dphj"]
 [ext_resource type="PackedScene" uid="uid://darey04mn6d57" path="res://scenes/player.tscn" id="2_be5nb"]
 [ext_resource type="Texture2D" uid="uid://dex78oqj1h5ap" path="res://assets/tilesets/tree.png" id="2_ti4gv"]
 [ext_resource type="PackedScene" uid="uid://menyqwr6fdx7" path="res://scenes/beast.tscn" id="3_av2iu"]
+[ext_resource type="PackedScene" uid="uid://cgttjp78xmyt6" path="res://scenes/spawn.tscn" id="5_vw2ek"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fmluo"]
 texture = ExtResource("1_0v0e4")
@@ -468,6 +470,7 @@ sources/2 = SubResource("TileSetAtlasSource_b06n4")
 
 [node name="game" type="Node2D"]
 y_sort_enabled = true
+script = ExtResource("1_5dphj")
 
 [node name="TileMap" type="TileMap" parent="."]
 y_sort_enabled = true
@@ -486,4 +489,19 @@ collision_layer = 1
 collision_mask = 1
 
 [node name="enemy" parent="." instance=ExtResource("3_av2iu")]
-position = Vector2(112, 25)
+position = Vector2(277, 46)
+
+[node name="Spawn" parent="." instance=ExtResource("5_vw2ek")]
+position = Vector2(29, 151)
+
+[node name="SpawnTimer" type="Timer" parent="."]
+wait_time = 5.0
+autostart = true
+
+[node name="SpawnArea" type="ReferenceRect" parent="."]
+offset_left = 8.0
+offset_top = 94.0
+offset_right = 166.0
+offset_bottom = 170.0
+
+[connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]
