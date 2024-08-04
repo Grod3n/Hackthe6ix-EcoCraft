@@ -1,9 +1,12 @@
-[gd_scene load_steps=8 format=3 uid="uid://r1gdkrmvl6m7"]
+[gd_scene load_steps=11 format=3 uid="uid://r1gdkrmvl6m7"]
 
 [ext_resource type="Texture2D" uid="uid://d1iowod0hpo3y" path="res://assets/tilesets/overworld.png" id="1_0v0e4"]
 [ext_resource type="PackedScene" uid="uid://darey04mn6d57" path="res://scenes/player.tscn" id="2_be5nb"]
 [ext_resource type="Texture2D" uid="uid://dex78oqj1h5ap" path="res://assets/tilesets/tree.png" id="2_ti4gv"]
 [ext_resource type="PackedScene" uid="uid://menyqwr6fdx7" path="res://scenes/beast.tscn" id="3_av2iu"]
+[ext_resource type="Script" path="res://scripts/deteriorationBar.gd" id="5_7rbcp"]
+[ext_resource type="Texture2D" uid="uid://ckm4w4tjvhecf" path="res://assets/misc/deteriorationBar/ProgressBarUnder.png" id="6_q1fje"]
+[ext_resource type="Texture2D" uid="uid://bfabkd8wc73bj" path="res://assets/misc/deteriorationBar/ProgressBarOver.png" id="7_tu7c7"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fmluo"]
 texture = ExtResource("1_0v0e4")
@@ -480,10 +483,22 @@ layer_1/name = "Collision"
 layer_1/y_sort_enabled = true
 layer_1/tile_data = PackedInt32Array(196610, 65536, 4, 196611, 65536, 4, 196612, 131072, 4, 262148, 0, 8, 262149, 131072, 4, 327685, 131072, 6, 327684, 65536, 6, 262146, 65536, 6, 262147, 65536, 7, 327683, 0, 6, 262145, 0, 6, 196609, 0, 4, 524306, 589824, 4, 589842, 589824, 5, 655378, 589824, 6, 524307, 655360, 4, 589843, 655360, 5, 655379, 655360, 6, 524308, 720896, 4, 589844, 720896, 5, 655380, 720896, 6, 196622, 720896, 7, 262159, 720896, 7, 65547, 0, 16, 393232, 131072, 16, 262151, 65536, 16, 524301, 65536, 16, 18, 0, 4, 65554, 0, 5, 131090, 0, 6, 19, 65536, 4, 65555, 65536, 5, 131091, 65536, 6, 20, 131072, 4, 65556, 131072, 5, 131092, 131072, 6, 196619, 589824, 4, 262155, 589824, 5, 327691, 589824, 6, 196620, 655360, 4, 262156, 655360, 5, 327692, 655360, 6, 196621, 720896, 4, 262157, 720896, 5, 327693, 720896, 6)
 
-[node name="player" parent="." instance=ExtResource("2_be5nb")]
-position = Vector2(15, 20)
+[node name="Player" parent="." instance=ExtResource("2_be5nb")]
+position = Vector2(27, 41)
 collision_layer = 1
 collision_mask = 1
 
-[node name="enemy" parent="." instance=ExtResource("3_av2iu")]
+[node name="Enemy" parent="." instance=ExtResource("3_av2iu")]
 position = Vector2(112, 25)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="DeteriorationBar" type="TextureProgressBar" parent="CanvasLayer"]
+offset_left = 4.0
+offset_top = 5.0
+offset_right = 68.0
+offset_bottom = 45.0
+value = 15.0
+texture_under = ExtResource("6_q1fje")
+texture_progress = ExtResource("7_tu7c7")
+script = ExtResource("5_7rbcp")
