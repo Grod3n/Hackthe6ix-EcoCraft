@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-const speed = 100
+const speed = 60
 var current_dir = "none"
 var is_dead = false
 var health = 100
@@ -93,12 +93,12 @@ func player():
 	pass
 
 func _on_attack_area_body_entered(body):
-	if body.has_method("enemy"):
+	if body.is_in_group("enemy"):
 		enemy_in_attack_range = true
 
  
 func _on_attack_area_body_exited(body):
-	if body.has_method("enemy"):
+	if body.is_in_group("enemy"):
 		enemy_in_attack_range = false
 
 func enemy_attack():
