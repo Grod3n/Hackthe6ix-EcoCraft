@@ -524,10 +524,10 @@ texture_progress = ExtResource("7_tu7c7")
 script = ExtResource("5_7rbcp")
 
 [node name="Score" type="Label" parent="."]
-offset_left = 113.0
-offset_top = -21.0
-offset_right = 266.0
-offset_bottom = 2.0
+offset_left = 107.0
+offset_top = -47.0
+offset_right = 260.0
+offset_bottom = -24.0
 theme = SubResource("Theme_x3a6e")
 theme_override_font_sizes/font_size = 8
 script = ExtResource("10_lr4pi")
