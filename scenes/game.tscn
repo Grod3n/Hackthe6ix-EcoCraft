@@ -143,7 +143,9 @@ texture = ExtResource("1_0v0e4")
 4:7/0 = 0
 5:7/0 = 0
 6:7/0 = 0
+6:7/0/physics_layer_0/polygon_0/points = PackedVector2Array(-0.875, -4.5, 8, -6.125, 8, 8, -1.75, 8, -5.375, 5.875)
 7:7/0 = 0
+7:7/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -5.625, 1.25, -4.375, 5.25, 8, -1.75, 8, -8, 8)
 9:7/0 = 0
 9:7/0/y_sort_origin = -36
 9:7/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 0.883883, 4.06586, 2.65165, 1.23744, 4.24264, 0.530331, 8, -8, 8)
@@ -164,7 +166,9 @@ texture = ExtResource("1_0v0e4")
 4:8/0 = 0
 5:8/0 = 0
 6:8/0 = 0
+6:8/0/physics_layer_0/polygon_0/points = PackedVector2Array(-5.375, -8, 8, -8, 8, 8, 0.25, 4.625, -2.625, 3)
 7:8/0 = 0
+7:8/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 9:8/0 = 0
 9:8/0/y_sort_origin = -36
 9:8/0/physics_layer_0/polygon_0/points = PackedVector2Array(4.94975, -3.00521, 8, -4.41942, 8, 8, 8, 8, -8, 8, -8, -8, 2.65165, -8, 2.47487, -2.65165)
@@ -540,18 +544,18 @@ offset_bottom = 40.0
 script = ExtResource("11_ebnnj")
 
 [node name="Label" type="Label" parent="."]
-offset_left = -207.0
-offset_top = -4.0
-offset_right = -42.0
-offset_bottom = 19.0
+offset_left = -206.0
+offset_top = 13.0
+offset_right = -41.0
+offset_bottom = 36.0
 text = "Welcome to EcoCraft!
 "
 
 [node name="Label2" type="Label" parent="."]
-offset_left = -200.0
-offset_top = 21.0
-offset_right = -48.0
-offset_bottom = 82.0
+offset_left = -199.0
+offset_top = 34.0
+offset_right = -47.0
+offset_bottom = 95.0
 theme_override_font_sizes/font_size = 9
 text = "Use your arrow keys to start your adventure to restore civilization! 
 Press SPACE to defend yourself from the viruses"
