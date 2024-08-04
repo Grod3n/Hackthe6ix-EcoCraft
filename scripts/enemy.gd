@@ -65,12 +65,12 @@ func animate():
 		$AnimatedSprite2D.play("side_walk")
 
 func _on_detection_area_body_entered(body):
-	if body.is_in_group("player"):
+
 		player = body
 		player_chase = true
 
 func _on_detection_area_body_exited(body):
-	if body == player:
+
 		player = null
 		player_chase = false
 

@@ -9,15 +9,10 @@ var tree_count = 0  # Variable to track the number of trees planted
 var enemy_in_attack_range = false
 var enemy_attack_cooldown = true
 var attack_ip = false
+var tree_scene = preload("res://scenes/Tree.tscn")  # Ensure this is the correct path to your tree scene
 
 
 
-@onready var tree_scene = preload("res://scenes/Tree.tscn")  # Preload the tree scene
-@onready var tree_count_label = $"/root/MainScene/TreeCountLabel"  # Path to your tree count label
-
-func _ready():
-	update_tree_count_label()  # Initialize the tree count label
-	print("TreeCountLabel Node: ", tree_count_label)
 
 func _physics_process(delta):
 	 
@@ -25,6 +20,7 @@ func _physics_process(delta):
 	enemy_attack()
 	attack()
 	update_health()
+	check_plant_tree()
 	
 	if health <= 0:
 		is_dead = true
@@ -139,20 +135,7 @@ func _on_deal_attack_timer_timeout():
 	Globalvar.player_current_attack = false
 	attack_ip = false
 
-func spawn_tree():
-	var tree_instance = tree_scene.instantiate()
-	get_parent().add_child(tree_instance)
-	tree_instance.global_position = global_position
-	tree_count += 1
-	update_tree_count_label()
-	print("Tree spawned at: ", global_position)
 
-func update_tree_count_label():
-	if tree_count_label:
-		tree_count_label.text = "Trees: " + str(tree_count)
-		print("Tree count updated to: ", tree_count)
-	else:
-		print("Tree count label is null")
 
 func update_health():
 	var healthbar = $healthbar
@@ -170,4 +153,14 @@ func _on_regin_timer_timeout():
 			health = 100
 	if health <= 0:
 		health = 0
-	 
+
+func check_plant_tree():
+	if Input.is_action_just_pressed("ui_spawn_tree"):
+		plant_tree()
+
+func plant_tree():
+	var tree = tree_scene.instantiate()  # Instance the tree scene
+	tree.position = self.position * 1.1 # Set the tree's position to the player's current position
+	get_parent().add_child(tree)  # Add the tree instance to the scene
+	tree_count += 1
+	print("Tree planted! Total trees planted: ", tree_count)

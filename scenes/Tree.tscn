@@ -1,8 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://bj7glfdedr0m"]
+[gd_scene load_steps=2 format=3 uid="uid://bl8e3qwgb71mh"]
 
-[ext_resource type="Texture2D" uid="uid://dex78oqj1h5ap" path="res://assets/misc/tree.png" id="1_0g61g"]
+[ext_resource type="Texture2D" uid="uid://dex78oqj1h5ap" path="res://assets/tilesets/tree.png" id="1_0g61g"]
 
 [node name="Tree" type="Sprite2D"]
 position = Vector2(0, 4.76837e-07)
-scale = Vector2(0.264, 0.264)
+scale = Vector2(0.0888745, 0.0888745)
 texture = ExtResource("1_0g61g")
