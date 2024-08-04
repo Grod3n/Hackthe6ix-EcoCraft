@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://r1gdkrmvl6m7"]
+[gd_scene load_steps=17 format=3 uid="uid://r1gdkrmvl6m7"]
 
 [ext_resource type="Texture2D" uid="uid://d1iowod0hpo3y" path="res://assets/tilesets/overworld.png" id="1_0v0e4"]
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_5dphj"]
@@ -6,11 +6,13 @@
 [ext_resource type="Texture2D" uid="uid://dex78oqj1h5ap" path="res://assets/tilesets/tree.png" id="2_ti4gv"]
 [ext_resource type="PackedScene" uid="uid://menyqwr6fdx7" path="res://scenes/beast.tscn" id="3_av2iu"]
 [ext_resource type="Script" path="res://scripts/deteriorationBar.gd" id="5_7rbcp"]
-[ext_resource type="PackedScene" uid="uid://cgttjp78xmyt6" path="res://scenes/spawn.tscn" id="5_vw2ek"]
+[ext_resource type="PackedScene" path="res://scenes/spawn.tscn" id="5_vw2ek"]
 [ext_resource type="Texture2D" uid="uid://ckm4w4tjvhecf" path="res://assets/misc/deteriorationBar/ProgressBarUnder.png" id="6_q1fje"]
 [ext_resource type="Texture2D" uid="uid://bfabkd8wc73bj" path="res://assets/misc/deteriorationBar/ProgressBarOver.png" id="7_tu7c7"]
 [ext_resource type="Script" path="res://scripts/score.gd" id="10_lr4pi"]
-[ext_resource type="Script" path="res://scripts/energy_bar.gd" id="11_ebnnj"]
+[ext_resource type="Texture2D" uid="uid://c0t14lv304bs8" path="res://assets/misc/Home.png" id="10_o61s2"]
+[ext_resource type="Script" path="res://scripts/label.gd" id="12_h3y2v"]
+[ext_resource type="Texture2D" uid="uid://cwof1akjqkt2f" path="res://assets/misc/Sun.png" id="13_qpski"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fmluo"]
 texture = ExtResource("1_0v0e4")
@@ -477,8 +479,6 @@ physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_fmluo")
 sources/2 = SubResource("TileSetAtlasSource_b06n4")
 
-[sub_resource type="Theme" id="Theme_x3a6e"]
-
 [node name="game" type="Node2D"]
 y_sort_enabled = true
 script = ExtResource("1_5dphj")
@@ -527,21 +527,41 @@ texture_under = ExtResource("6_q1fje")
 texture_progress = ExtResource("7_tu7c7")
 script = ExtResource("5_7rbcp")
 
-[node name="Score" type="Label" parent="."]
-offset_left = 107.0
-offset_top = -47.0
-offset_right = 260.0
-offset_bottom = -24.0
-theme = SubResource("Theme_x3a6e")
-theme_override_font_sizes/font_size = 8
+[node name="Score" type="HBoxContainer" parent="CanvasLayer"]
+offset_left = 119.0
+offset_top = 3.0
+offset_right = 162.0
+offset_bottom = 26.0
+scale = Vector2(0.7, 0.7)
+
+[node name="Label" type="Label" parent="CanvasLayer/Score"]
+layout_mode = 2
+text = "0"
 script = ExtResource("10_lr4pi")
 
-[node name="CanvasLayer2" type="CanvasLayer" parent="."]
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Score"]
+layout_mode = 2
+texture = ExtResource("10_o61s2")
+expand_mode = 2
+stretch_mode = 4
 
-[node name="EnergyBar" type="TextureProgressBar" parent="CanvasLayer2"]
-offset_right = 40.0
-offset_bottom = 40.0
-script = ExtResource("11_ebnnj")
+[node name="Energy" type="HBoxContainer" parent="CanvasLayer"]
+offset_left = 157.0
+offset_top = 3.0
+offset_right = 200.0
+offset_bottom = 26.0
+scale = Vector2(0.7, 0.7)
+
+[node name="Label" type="Label" parent="CanvasLayer/Energy"]
+layout_mode = 2
+text = "0"
+script = ExtResource("12_h3y2v")
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Energy"]
+layout_mode = 2
+texture = ExtResource("13_qpski")
+expand_mode = 2
+stretch_mode = 4
 
 [node name="Label" type="Label" parent="."]
 offset_left = -206.0

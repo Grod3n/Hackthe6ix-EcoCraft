@@ -6,7 +6,7 @@ var is_dead = false
 var health = 100
 var max_health = 100  # Maximum health for the player
 var tree_count = 0  # Variable to track the number of trees planted
-var house_count = 0
+var house_count = Globalvar.score
 var enemy_in_attack_range = false
 var enemy_attack_cooldown = true
 var attack_ip = false
@@ -29,10 +29,21 @@ func _physics_process(delta):
 		is_dead = true
 		health = 0
 		Globalvar.score = 0
+		Globalvar.deterioration = 0
+		Globalvar.energy = 50
 		get_tree().change_scene_to_file("res://scenes/GameOverScreen.tscn")
-	if house_count >= 10:
+	if house_count >= 20:
 		Globalvar.score = 0
+		Globalvar.deterioration = 0
+		Globalvar.energy = 50
 		get_tree().change_scene_to_file("res://scenes/GameWinScreen.tscn")
+	if Globalvar.deterioration >= 100:
+		is_dead = true
+		health = 0
+		Globalvar.score = 0
+		Globalvar.deterioration = 0
+		Globalvar.energy = 50
+		get_tree().change_scene_to_file("res://scenes/GameOverScreen.tscn")
 	
 func player_movement(delta):
 	
@@ -172,6 +183,7 @@ func plant_tree():
 		get_parent().add_child(tree)  # Add the tree instance to the scene
 		tree_count += 1
 		Globalvar.energy -= 10
+		Globalvar.deterioration -= 20
 		print("Tree planted! Total trees planted: ", tree_count)
 	else:
 		print("No Energy")
@@ -189,6 +201,7 @@ func build_house():
 		house_count += 1
 		Globalvar.score += 1
 		Globalvar.energy -= 30
+		Globalvar.deterioration += 10
 		print("House built! Total house planted: ", house_count)
 	else:
 		print("No Energy")
