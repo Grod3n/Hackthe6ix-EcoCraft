@@ -12,7 +12,7 @@ var enemy_attack_cooldown = true
 var attack_ip = false
 var tree_scene = preload("res://scenes/Tree.tscn")  # Ensure this is the correct path to your tree scene
 var house_scene = preload("res://scenes/pixel_house.tscn")
-
+var lose_scene = preload("res://scenes/GameWinScreen.tscn")
 
 
 func _physics_process(delta):
@@ -28,7 +28,9 @@ func _physics_process(delta):
 		is_dead = true
 		health = 0
 		self.queue_free()
-
+	if house_count >= 10:
+		get_tree().change_scene_to_file("res://scenes/GameWinScreen.tscn")
+		
 func player_movement(delta):
 	
 		velocity = Vector2.ZERO
@@ -177,4 +179,3 @@ func build_house():
 	get_parent().add_child(house)  # Add the tree instance to the scene
 	house_count += 1
 	print("House built! Total house planted: ", house_count)
-	
