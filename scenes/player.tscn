@@ -465,8 +465,10 @@ show_percentage = false
 
 [node name="regin_timer" type="Timer" parent="."]
 wait_time = 5.0
+autostart = true
 
 [connection signal="timeout" from="attack_timer" to="." method="_on_attack_timer_timeout"]
 [connection signal="body_entered" from="AttackArea" to="." method="_on_attack_area_body_entered"]
 [connection signal="body_exited" from="AttackArea" to="." method="_on_attack_area_body_exited"]
 [connection signal="timeout" from="deal_attack_timer" to="." method="_on_deal_attack_timer_timeout"]
+[connection signal="timeout" from="regin_timer" to="." method="_on_regin_timer_timeout"]
