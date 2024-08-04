@@ -19,10 +19,10 @@ texture = ExtResource("1_kcwce")
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 0
-offset_left = 96.0
-offset_top = 30.0
-offset_right = 201.0
-offset_bottom = 53.0
+offset_left = 105.0
+offset_top = 27.0
+offset_right = 210.0
+offset_bottom = 50.0
 text = "Game Over :("
 
 [node name="Button" type="Button" parent="."]
@@ -32,4 +32,4 @@ offset_top = 57.0
 offset_right = 184.0
 offset_bottom = 88.0
 scale = Vector2(0.802092, 0.802092)
-text = "Restart"
+text = "Play Again"
