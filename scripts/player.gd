@@ -6,11 +6,12 @@ var is_dead = false
 var health = 100
 var max_health = 100  # Maximum health for the player
 var tree_count = 0  # Variable to track the number of trees planted
+var house_count = 0
 var enemy_in_attack_range = false
 var enemy_attack_cooldown = true
 var attack_ip = false
 var tree_scene = preload("res://scenes/Tree.tscn")  # Ensure this is the correct path to your tree scene
-
+var house_scene = preload("res://scenes/pixel_house.tscn")
 
 
 
@@ -21,6 +22,7 @@ func _physics_process(delta):
 	attack()
 	update_health()
 	check_plant_tree()
+	check_build_house()
 	
 	if health <= 0:
 		is_dead = true
@@ -164,3 +166,15 @@ func plant_tree():
 	get_parent().add_child(tree)  # Add the tree instance to the scene
 	tree_count += 1
 	print("Tree planted! Total trees planted: ", tree_count)
+	
+func check_build_house():
+	if Input.is_action_just_pressed("ui_spawn_house"):
+		build_house()
+		
+func build_house():
+	var house = house_scene.instantiate()  # Instance the tree scene
+	house.position = self.position # Set the tree's position to the player's current position
+	get_parent().add_child(house)  # Add the tree instance to the scene
+	house_count += 1
+	print("House built! Total house planted: ", house_count)
+	
