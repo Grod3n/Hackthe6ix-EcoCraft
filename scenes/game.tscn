@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://r1gdkrmvl6m7"]
+[gd_scene load_steps=15 format=3 uid="uid://r1gdkrmvl6m7"]
 
 [ext_resource type="Texture2D" uid="uid://d1iowod0hpo3y" path="res://assets/tilesets/overworld.png" id="1_0v0e4"]
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_5dphj"]
@@ -472,6 +472,8 @@ physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_fmluo")
 sources/2 = SubResource("TileSetAtlasSource_b06n4")
 
+[sub_resource type="Theme" id="Theme_x3a6e"]
+
 [node name="game" type="Node2D"]
 y_sort_enabled = true
 script = ExtResource("1_5dphj")
@@ -521,8 +523,12 @@ texture_progress = ExtResource("7_tu7c7")
 script = ExtResource("5_7rbcp")
 
 [node name="Score" type="Label" parent="."]
-offset_right = 40.0
-offset_bottom = 23.0
+offset_left = 113.0
+offset_top = -21.0
+offset_right = 266.0
+offset_bottom = 2.0
+theme = SubResource("Theme_x3a6e")
+theme_override_font_sizes/font_size = 8
 script = ExtResource("10_lr4pi")
 
 [connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]

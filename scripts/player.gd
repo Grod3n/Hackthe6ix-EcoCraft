@@ -28,10 +28,12 @@ func _physics_process(delta):
 	if health <= 0:
 		is_dead = true
 		health = 0
+		Globalvar.score = 0
 		get_tree().change_scene_to_file("res://scenes/GameOverScreen.tscn")
 	if house_count >= 10:
+		Globalvar.score = 0
 		get_tree().change_scene_to_file("res://scenes/GameWinScreen.tscn")
-		
+	
 func player_movement(delta):
 	
 		velocity = Vector2.ZERO
@@ -164,20 +166,29 @@ func check_plant_tree():
 		plant_tree()
 
 func plant_tree():
-	var tree = tree_scene.instantiate()  # Instance the tree scene
-	tree.position = self.position * 1.1 # Set the tree's position to the player's current position
-	get_parent().add_child(tree)  # Add the tree instance to the scene
-	tree_count += 1
-	print("Tree planted! Total trees planted: ", tree_count)
-	
+	if Globalvar.energy >= 10:
+		var tree = tree_scene.instantiate()  # Instance the tree scene
+		tree.position = self.position * 1.1 # Set the tree's position to the player's current position
+		get_parent().add_child(tree)  # Add the tree instance to the scene
+		tree_count += 1
+		Globalvar.energy -= 10
+		print("Tree planted! Total trees planted: ", tree_count)
+	else:
+		print("No Energy")
+		
 func check_build_house():
 	if Input.is_action_just_pressed("ui_spawn_house"):
 		build_house()
-		Globalvar.score +=10
+		
 		
 func build_house():
-	var house = house_scene.instantiate()  # Instance the tree scene
-	house.position = self.position # Set the tree's position to the player's current position
-	get_parent().add_child(house)  # Add the tree instance to the scene
-	house_count += 1
-	print("House built! Total house planted: ", house_count)
+	if Globalvar.energy >= 30:
+		var house = house_scene.instantiate()  # Instance the tree scene
+		house.position = self.position # Set the tree's position to the player's current position
+		get_parent().add_child(house)  # Add the tree instance to the scene
+		house_count += 1
+		Globalvar.score += 1
+		Globalvar.energy -= 30
+		print("House built! Total house planted: ", house_count)
+	else:
+		print("No Energy")

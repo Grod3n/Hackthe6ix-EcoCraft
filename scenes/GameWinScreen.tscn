@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://d2p87xthjq2fk"]
+[gd_scene load_steps=3 format=3 uid="uid://bwldsj0cnpi44"]
 
 [ext_resource type="Script" path="res://scripts/GameWinScreen.gd" id="1_5uyhi"]
 [ext_resource type="Texture2D" uid="uid://cacjohn71lglr" path="res://assets/misc/Game Win Background.png" id="1_ymsrb"]
@@ -12,16 +12,16 @@ script = ExtResource("1_5uyhi")
 
 [node name="WinBackgroudn" type="TextureRect" parent="."]
 layout_mode = 0
-offset_right = 1792.0
-offset_bottom = 1024.0
+offset_right = 1950.0
+offset_bottom = 1114.0
 scale = Vector2(0.148064, 0.148064)
 texture = ExtResource("1_ymsrb")
 
 [node name="Button" type="Button" parent="."]
 layout_mode = 0
-offset_left = 82.0
-offset_top = 52.0
-offset_right = 1323.0
-offset_bottom = 643.0
-scale = Vector2(0.0818003, 0.0818003)
-text = "Restart"
+offset_left = 112.0
+offset_top = 67.0
+offset_right = 424.0
+offset_bottom = 148.0
+scale = Vector2(0.237399, 0.237399)
+text = "Play Again"
