@@ -466,6 +466,14 @@ show_percentage = false
 wait_time = 5.0
 autostart = true
 
+[node name="Camera2D" type="Camera2D" parent="."]
+process_callback = 0
+position_smoothing_enabled = true
+position_smoothing_speed = 2.0
+rotation_smoothing_speed = 8.0
+drag_horizontal_enabled = true
+drag_vertical_enabled = true
+
 [connection signal="timeout" from="attack_timer" to="." method="_on_attack_timer_timeout"]
 [connection signal="body_entered" from="AttackArea" to="." method="_on_attack_area_body_entered"]
 [connection signal="body_exited" from="AttackArea" to="." method="_on_attack_area_body_exited"]

@@ -20,7 +20,7 @@ func _ready():
 	print("TreeCountLabel Node: ", tree_count_label)
 
 func _physics_process(delta):
-	 
+	
 	player_movement(delta)
 	enemy_attack()
 	attack()
@@ -53,7 +53,6 @@ func player_movement(delta):
 			velocity.y = -speed
 		else:
 			animate(0)
-
 		move_and_slide()
 		
 func animate(movement):
@@ -66,7 +65,8 @@ func animate(movement):
 				animation.play("side_walk")
 		elif movement == 0:
 			if attack_ip == false:
-				animation.play("side_idle")	
+				animation.play("side_idle")
+		
 	if dir == "left":
 		animation.flip_h = true
 		if movement == 1:
@@ -74,21 +74,21 @@ func animate(movement):
 		elif movement == 0:
 			if attack_ip == false:
 				animation.play("side_idle")
-			
+		
 	if dir == "up":
 		if movement == 1:
 			animation.play("back_walk")
 		elif movement == 0:
 			if attack_ip == false:
 				animation.play("back_idle")
-			
+		
 	if dir == "down":
 		if movement == 1:
 			animation.play("front_walk")
 		elif movement == 0:
 			if attack_ip == false:
 				animation.play("front_idle")
-			
+
 func player():
 	pass
 
