@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://r1gdkrmvl6m7"]
+[gd_scene load_steps=14 format=3 uid="uid://r1gdkrmvl6m7"]
 
 [ext_resource type="Texture2D" uid="uid://d1iowod0hpo3y" path="res://assets/tilesets/overworld.png" id="1_0v0e4"]
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_5dphj"]
@@ -6,9 +6,10 @@
 [ext_resource type="Texture2D" uid="uid://dex78oqj1h5ap" path="res://assets/tilesets/tree.png" id="2_ti4gv"]
 [ext_resource type="PackedScene" uid="uid://menyqwr6fdx7" path="res://scenes/beast.tscn" id="3_av2iu"]
 [ext_resource type="Script" path="res://scripts/deteriorationBar.gd" id="5_7rbcp"]
-[ext_resource type="PackedScene" path="res://scenes/spawn.tscn" id="5_vw2ek"]
+[ext_resource type="PackedScene" uid="uid://cgttjp78xmyt6" path="res://scenes/spawn.tscn" id="5_vw2ek"]
 [ext_resource type="Texture2D" uid="uid://ckm4w4tjvhecf" path="res://assets/misc/deteriorationBar/ProgressBarUnder.png" id="6_q1fje"]
 [ext_resource type="Texture2D" uid="uid://bfabkd8wc73bj" path="res://assets/misc/deteriorationBar/ProgressBarOver.png" id="7_tu7c7"]
+[ext_resource type="Script" path="res://scripts/score.gd" id="10_lr4pi"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fmluo"]
 texture = ExtResource("1_0v0e4")
@@ -518,5 +519,10 @@ value = 25.0
 texture_under = ExtResource("6_q1fje")
 texture_progress = ExtResource("7_tu7c7")
 script = ExtResource("5_7rbcp")
+
+[node name="Score" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+script = ExtResource("10_lr4pi")
 
 [connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]

@@ -173,6 +173,7 @@ func plant_tree():
 func check_build_house():
 	if Input.is_action_just_pressed("ui_spawn_house"):
 		build_house()
+		Globalvar.score +=10
 		
 func build_house():
 	var house = house_scene.instantiate()  # Instance the tree scene
