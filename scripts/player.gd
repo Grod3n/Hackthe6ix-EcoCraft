@@ -12,7 +12,8 @@ var enemy_attack_cooldown = true
 var attack_ip = false
 var tree_scene = preload("res://scenes/Tree.tscn")  # Ensure this is the correct path to your tree scene
 var house_scene = preload("res://scenes/pixel_house.tscn")
-var lose_scene = preload("res://scenes/GameWinScreen.tscn")
+var win_scene = preload("res://scenes/GameWinScreen.tscn")
+var lose_scene = preload("res://scenes/GameOverScreen.tscn")
 
 
 func _physics_process(delta):
@@ -27,7 +28,7 @@ func _physics_process(delta):
 	if health <= 0:
 		is_dead = true
 		health = 0
-		self.queue_free()
+		get_tree().change_scene_to_file("res://scenes/GameOverScreen.tscn")
 	if house_count >= 10:
 		get_tree().change_scene_to_file("res://scenes/GameWinScreen.tscn")
 		
