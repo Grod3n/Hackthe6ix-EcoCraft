@@ -415,7 +415,7 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_k73q4"]
-radius = 6.08276
+radius = 6.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ht1cb"]
 radius = 15.0
@@ -429,13 +429,12 @@ script = ExtResource("1_uvn2p")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." groups=["player"]]
 sprite_frames = SubResource("SpriteFrames_hlv86")
-animation = &"front_idle"
-frame_progress = 0.823361
+animation = &"front_attack"
+offset = Vector2(0, -12.5)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["player"]]
 light_mask = 3
 visibility_layer = 3
-position = Vector2(1, 14)
 shape = SubResource("CircleShape2D_k73q4")
 
 [node name="attack_timer" type="Timer" parent="." groups=["player"]]
@@ -448,7 +447,7 @@ collision_mask = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea" groups=["player"]]
 light_mask = 3
 visibility_layer = 3
-position = Vector2(0, 8)
+position = Vector2(0, -5)
 shape = SubResource("CircleShape2D_ht1cb")
 
 [node name="deal_attack_timer" type="Timer" parent="."]
